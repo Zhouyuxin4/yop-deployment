@@ -4,6 +4,7 @@ exports.authenticateToken = (req, res, next) => {
     //const token = req.header('Authorization')?.split(' ')[1];
     const token = req.cookies.authToken;
     console.log(token);
+    console.log(req.cookies)
 
     //if the request doesn't contain a token
     if (!token) return res.status(403).json({ message: 'Access denied.' });
