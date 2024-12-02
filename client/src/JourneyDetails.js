@@ -213,7 +213,7 @@ function JourneyDetails() {
     
 
             <div className='details-container'>
-            <MapComponent apiKey="AIzaSyBvjss2rrxy8HRCt-Yu6dnKRoUpX35wKh8"/>
+            <MapComponent apiKey = {process.env.GOOGLEMAP_API_KEY}/>
 
             <div className="details-list">
                 <h2>Journey Details</h2>
