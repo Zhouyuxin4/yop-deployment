@@ -43,6 +43,5 @@
   },
   "devDependencies": {
     "@types/googlemaps": "^3.43.3"
-  },
-  "proxy": "http://localhost:3000"
+  }
 }
