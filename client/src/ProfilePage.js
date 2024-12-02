@@ -29,7 +29,7 @@ function ProfilePage() {
         }
         try {
             const response = await axios.put(
-                `http://localhost:3000/users/${userName}`,
+                `${process.env.BACKEND_URL}/users/${userName}`,
                 formData, { withCredentials: true });
             const user = response.data;
             //localStorage.setItem('user', JSON.stringify(user));
@@ -56,7 +56,7 @@ function ProfilePage() {
     
         console.log('delete account', { userName: user.userName });
         axios
-            .delete(`http://localhost:3000/users/${user.userName}`, { withCredentials: true })
+            .delete(`${process.env.BACKEND_URL}/users/${user.userName}`, { withCredentials: true })
             .then(() => {
                 console.log('User account deleted.');
                 Cookies.remove('user');

@@ -41,7 +41,7 @@ const MapComponent = ({ apiKey }) => {
             try {
 
                 // const response = await axios.get(
-                //     `http://localhost:3000/details/${id}/allDetails`,
+                //     `${process.env.BACKEND_URL}/details/${id}/allDetails`,
                 //     {
                 //         headers: {
                 //             Authorization: `Bearer ${localStorage.getItem('authToken')}`
@@ -49,7 +49,7 @@ const MapComponent = ({ apiKey }) => {
                 //     }
                 // );
                 const response = await axios.get(
-                    `http://localhost:3000/details/${id}/allDetails`, {withCredentials: true});
+                    `${process.env.BACKEND_URL}/details/${id}/allDetails`, {withCredentials: true});
 
                 // Convert to all details to markers
                 const existingMarkers = response.data.map(detail => ({
@@ -196,7 +196,7 @@ const MapComponent = ({ apiKey }) => {
 
             console.log('Details Information:', formData);
 
-            // const response = await axios.post(`http://localhost:3000/details/${journeyId}/createDetails`,
+            // const response = await axios.post(`${process.env.BACKEND_URL}/details/${journeyId}/createDetails`,
             // formData,
             //  {
             //     headers: {
@@ -204,7 +204,7 @@ const MapComponent = ({ apiKey }) => {
             //         'Content-Type': 'multipart/form-data',
             //     },
             // });
-            const response = await axios.post(`http://localhost:3000/details/${journeyId}/createDetails`,
+            const response = await axios.post(`${process.env.BACKEND_URL}/details/${journeyId}/createDetails`,
                 formData, {withCredentials: true});
 
             const newDetailId = response.data._id;
@@ -239,30 +239,6 @@ const MapComponent = ({ apiKey }) => {
         setSelectedMarkerIndex(null);
     };
 
-    // const handleDelete = async (index) => {
-    //     const marker = markers[index];
-
-    //     if (!marker.detailId) {
-    //         // 如果是未保存的 marker，直接从数组中移除
-    //         const updatedMarkers = markers.filter((_, i) => i !== index);
-    //         setMarkers(updatedMarkers);
-    //         setSelectedMarkerIndex(null);
-    //         return;
-    //     }
-
-    //     console.log('Deleting marker:', marker); 
-    //     try {
-    //         await axios.delete(`http://localhost:3000/details/${journeyId}/${marker.detailID}`);
-    //         const updatedMarkers = markers.filter((_, i) => i !== index);
-    //         setMarkers(updatedMarkers);
-    //         setSelectedMarkerIndex(null);
-    //         alert('Marker deleted successfully');
-    //         console.log('Marker deleted successfully');
-    //     } catch (error) {
-    //         alert('Failed to delete marker');
-    //         console.error('Error deleting marker:', error);
-    //     }
-    // };
 
     if (loadError) return <div>Error loading maps</div>;
     if (!isLoaded) return <div>Loading maps...</div>;
