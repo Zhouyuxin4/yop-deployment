@@ -41,7 +41,7 @@ const MapComponent = ({ apiKey }) => {
             try {
 
                 // const response = await axios.get(
-                //     `${process.env.BACKEND_URL}/details/${id}/allDetails`,
+                //     `https://yop-deployment-api.onrender.com/details/${id}/allDetails`,
                 //     {
                 //         headers: {
                 //             Authorization: `Bearer ${localStorage.getItem('authToken')}`
@@ -49,7 +49,7 @@ const MapComponent = ({ apiKey }) => {
                 //     }
                 // );
                 const response = await axios.get(
-                    `${process.env.BACKEND_URL}/details/${id}/allDetails`, {withCredentials: true});
+                    `https://yop-deployment-api.onrender.com/details/${id}/allDetails`, {withCredentials: true});
 
                 // Convert to all details to markers
                 const existingMarkers = response.data.map(detail => ({
@@ -196,7 +196,7 @@ const MapComponent = ({ apiKey }) => {
 
             console.log('Details Information:', formData);
 
-            // const response = await axios.post(`${process.env.BACKEND_URL}/details/${journeyId}/createDetails`,
+            // const response = await axios.post(`https://yop-deployment-api.onrender.com/details/${journeyId}/createDetails`,
             // formData,
             //  {
             //     headers: {
@@ -204,7 +204,7 @@ const MapComponent = ({ apiKey }) => {
             //         'Content-Type': 'multipart/form-data',
             //     },
             // });
-            const response = await axios.post(`${process.env.BACKEND_URL}/details/${journeyId}/createDetails`,
+            const response = await axios.post(`https://yop-deployment-api.onrender.com/details/${journeyId}/createDetails`,
                 formData, {withCredentials: true});
 
             const newDetailId = response.data._id;

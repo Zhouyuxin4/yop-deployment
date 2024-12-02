@@ -17,7 +17,7 @@ function SearchPage() {
     const handleSearchJourney = async () => {
         try {
             const response = await axios.get(
-                `${process.env.BACKEND_URL}/users/${userName}/search`,
+                `https://yop-deployment-api.onrender.com/users/${userName}/search`,
                 {
                     params: { keyword },
                     withCredentials: true,

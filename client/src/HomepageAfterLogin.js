@@ -39,7 +39,7 @@ function HomepageAfterLogin({ userProfile }) {
         const journey = { title: defaultTitle, details: defaultDetails };
         console.log('Create a new journey', journey);
         try {
-            const response = await axios.post(`${process.env.BACKEND_URL}/journeys/${userName}`, journey, {withCredentials: true});
+            const response = await axios.post(`https://yop-deployment-api.onrender.com/journeys/${userName}`, journey, {withCredentials: true});
             const journeyId = response.data._id;
             console.log('Journey created:', response.data);
             navigate(`/journey/${journeyId}`);
@@ -62,7 +62,7 @@ function HomepageAfterLogin({ userProfile }) {
 
         console.log(userName);
         console.log(Cookies.get('authToken'));
-        axios.get(`${process.env.BACKEND_URL}/journeys/${userName}`, {withCredentials: true})
+        axios.get(`https://yop-deployment-api.onrender.com/journeys/${userName}`, {withCredentials: true})
             .then(response => {
                 console.log(response.data);
                 setJourneys(response.data);

@@ -31,7 +31,6 @@ function SignIn() {
             }
             try {
                 const response = await axios.post(`https://yop-deployment-api.onrender.com/users/`, formData, {withCredentials: true});
-                console.log(process.env.BACKEND_URL)
                 console.log(response)
                 console.log('User created:', response.data);
                 alert('Sign up successfully! Please log in.');
@@ -43,7 +42,7 @@ function SignIn() {
         } else {
             console.log('Signing in:', { userName, password });
             try {
-                const response = await axios.post(`${process.env.BACKEND_URL}/users/login`, { userName, password }, {withCredentials: true});
+                const response = await axios.post(`https://yop-deployment-api.onrender.com/users/login`, { userName, password }, {withCredentials: true});
                 const { token, user } = response.data;
                 console.log('Login successful:', user);
                 Cookies.set('authToken', token);
