@@ -9,7 +9,7 @@ let cors = require("cors");
 // app.use(cors());
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL,  // 允许前端域名
+  origin: 'https://yop-deployment-frontend.onrender.com',  // 允许前端域名
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // 允许的请求方法
   allowedHeaders: ['Content-Type', 'Authorization'], // 允许的请求头
   credentials: true  // 允许发送认证信息（cookies, authorization headers）
@@ -18,7 +18,6 @@ app.use(cors({
 app.use(express.json());
 
 app.use(cookieParser());
-
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -43,7 +42,7 @@ app.get('/', (req, res) => {
 });
 app.use(express.json());
 const customHeadersAppLevel = function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
+  res.header('Access-Control-Allow-Origin', 'https://yop-deployment-frontend.onrender.com');
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
