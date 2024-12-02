@@ -45,9 +45,24 @@ function SignIn() {
                 const response = await axios.post(`https://yop-deployment-api.onrender.com/users/login`, { userName, password }, {withCredentials: true});
                 const { token, user } = response.data;
                 console.log('Login successful:', user);
-                Cookies.set('authToken', token);
-                Cookies.set('user', JSON.stringify(user));
-                Cookies.set('user.userName', user.userName);
+                Cookies.set('authToken', token, {
+                    secure: true,         // Ensures the cookie is only sent over HTTPS
+                    sameSite: 'None',     // Allows cross-site requests
+                    path: '/',            // Makes the cookie accessible throughout the site
+                    expires: 7            // Optional: Expires in 7 days
+                });
+                Cookies.set('user', JSON.stringify(user), {
+                    secure: true,         // Ensures the cookie is only sent over HTTPS
+                    sameSite: 'None',     // Allows cross-site requests
+                    path: '/',            // Makes the cookie accessible throughout the site
+                    expires: 7            // Optional: Expires in 7 days
+                });
+                Cookies.set('user.userName', user.userName, {
+                    secure: true,         // Ensures the cookie is only sent over HTTPS
+                    sameSite: 'None',     // Allows cross-site requests
+                    path: '/',            // Makes the cookie accessible throughout the site
+                    expires: 7            // Optional: Expires in 7 days
+                });
 
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 

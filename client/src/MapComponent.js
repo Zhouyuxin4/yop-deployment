@@ -210,7 +210,12 @@ const MapComponent = ({ apiKey }) => {
             const newDetailId = response.data._id;
             setDetailId(newDetailId);
             //localStorage.setItem('currentDetailId', newDetailId);
-            Cookies.set('currentDetailId', newDetailId);
+            Cookies.set('currentDetailId', newDetailId, {
+                secure: true,         // Ensures the cookie is only sent over HTTPS
+                sameSite: 'None',     // Allows cross-site requests
+                path: '/',            // Makes the cookie accessible throughout the site
+                expires: 7            // Optional: Expires in 7 days
+            });
 
             if (response.status === 201) {
 
