@@ -302,4 +302,3 @@ JWT_EXPIRATION=1h
 - Users: Create, Read, Update, Delete
 - Journeys: Create, Read, Update, Delete
 - Journey Details: In progress
-# yop-deployment
