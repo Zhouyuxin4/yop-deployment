@@ -211,7 +211,7 @@ const MapComponent = ({ apiKey }) => {
             setDetailId(newDetailId);
             //localStorage.setItem('currentDetailId', newDetailId);
             Cookies.set('currentDetailId', newDetailId, {
-                secure: true,         // Ensures the cookie is only sent over HTTPS
+                secure: process.env.NODE_ENV === 'production',
                 sameSite: 'None',     // Allows cross-site requests
                 path: '/',            // Makes the cookie accessible throughout the site
                 expires: 7            // Optional: Expires in 7 days

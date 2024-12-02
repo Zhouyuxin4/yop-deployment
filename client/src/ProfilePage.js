@@ -34,7 +34,7 @@ function ProfilePage() {
             const user = response.data;
             //localStorage.setItem('user', JSON.stringify(user));
             Cookies.set('user', JSON.stringify(user), {
-                secure: true,         // Ensures the cookie is only sent over HTTPS
+                secure: process.env.NODE_ENV === 'production',
                 sameSite: 'None',     // Allows cross-site requests
                 path: '/',            // Makes the cookie accessible throughout the site
                 expires: 7            // Optional: Expires in 7 days

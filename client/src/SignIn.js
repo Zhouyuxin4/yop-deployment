@@ -46,19 +46,19 @@ function SignIn() {
                 const { token, user } = response.data;
                 console.log('Login successful:', user);
                 Cookies.set('authToken', token, {
-                    secure: true,         // Ensures the cookie is only sent over HTTPS
+                    secure: process.env.NODE_ENV === 'production',
                     sameSite: 'None',     // Allows cross-site requests
                     path: '/',            // Makes the cookie accessible throughout the site
                     expires: 7            // Optional: Expires in 7 days
                 });
                 Cookies.set('user', JSON.stringify(user), {
-                    secure: true,         // Ensures the cookie is only sent over HTTPS
+                    secure: process.env.NODE_ENV === 'production',
                     sameSite: 'None',     // Allows cross-site requests
                     path: '/',            // Makes the cookie accessible throughout the site
                     expires: 7            // Optional: Expires in 7 days
                 });
                 Cookies.set('user.userName', user.userName, {
-                    secure: true,         // Ensures the cookie is only sent over HTTPS
+                    secure: process.env.NODE_ENV === 'production',
                     sameSite: 'None',     // Allows cross-site requests
                     path: '/',            // Makes the cookie accessible throughout the site
                     expires: 7            // Optional: Expires in 7 days

@@ -35,6 +35,10 @@ app.use('/users', userRoutes);
 app.use('/journeys', journeyRoutes);
 app.use('/details', journeyDetailRoutes);
 
+app.use((req, res, next) => {
+  console.log('Cookies:', req.cookies); // Requires cookie-parser middleware
+  next();
+});
 
 app.get('/', (req, res) => {
   res.send('Welcome to the YOP API.');
