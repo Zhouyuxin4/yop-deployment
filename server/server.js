@@ -48,7 +48,11 @@ const customHeadersAppLevel = function (req, res, next) {
     'Origin, X-Requested-With, Content-Type, Accept'
   );
   res.header('Access-Control-Allow-Credentials', 'true');
-    next();
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    return res.sendStatus(204);
+  }
+  next();
 };
 app.all('*', customHeadersAppLevel);
 app.listen(process.env.PORT, () => {
