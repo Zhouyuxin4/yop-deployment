@@ -31,6 +31,8 @@ function SignIn() {
             }
             try {
                 const response = await axios.post(`${process.env.BACKEND_URL}/users/`, formData, {withCredentials: true});
+                console.log(process.env.BACKEND_URL)
+                console.log(response)
                 console.log('User created:', response.data);
                 alert('Sign up successfully! Please log in.');
                 navigate('/'); 
