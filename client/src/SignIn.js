@@ -65,7 +65,7 @@ function SignIn() {
                 });
 
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
+                axios.defaults.withCredentials = true
                 // localStorage.setItem('authToken', token);
                 // localStorage.setItem('user', JSON.stringify(user));
                 // localStorage.setItem('user.userName', user.userName);
